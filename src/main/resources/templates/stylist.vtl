@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>$stylist.getName()</h2>
+    <p>$stylist.getTelNumber()</p>
+    <hr/>
+    #if(!$stylist.getClients())
+        <ul>
+            #set ($count = 0)
+            #foreach($client in $stylist.getClients())
+                #set($count = $count + 1)
+                <p>$count<span>.</span> <a href="clients/$client.getId()">$client.getName()</a></p>
+            #end
+        </ul>
+    #else
+        <p>You have no listed clients</p>
+    #end
+</div>

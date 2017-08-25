@@ -17,7 +17,9 @@ public class StylistTest {
     public void tearDown(){
         try(Connection conn = DB.sql2o.open()){
             String stylistsql = "DELETE FROM stylists *";
+            String clientsql = "DELETE FROM clients *";
             conn.createQuery(stylistsql).executeUpdate();
+            conn.createQuery(clientsql).executeUpdate();
         }
     }
     @Test
@@ -74,12 +76,12 @@ public class StylistTest {
         newStylist.delete();
         assertFalse(Stylist.all().size()>0);
     }
-//    @Test
-//    public void getClients_returnsAllTheStylistClients_String(){
-//        Stylist newStylist = new Stylist("Rose","123");
-//        newStylist.save();
-//        Client newClient = new Client("Victor","0721717141",newStylist.getId());
-//        newClient.save();
-//        assertTrue(Client.all().size()>0);
-//    }
+    @Test
+    public void getClients_returnsAllTheStylistClients_String(){
+        Stylist newStylist = new Stylist("Rose","123");
+        newStylist.save();
+        Client newClient = new Client("Victor","0721717141",newStylist.getId());
+        newClient.save();
+        assertEquals(newStylist.getClients().get(0).getName(),newClient.getName());
+    }
 }

@@ -39,8 +39,15 @@ public class App {
             String telno = request.queryParams("telno");
             Stylist newStylist = new Stylist(stylistName,telno);
             newStylist.save();
-
             response.redirect("/");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/stylist/:stylist_id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            Stylist stylist = Stylist.find(Integer.parseInt(request.params("stylist_id")));
+            model.put("stylist", stylist);
+            model.put("template", "templates/stylist.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
     }
