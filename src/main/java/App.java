@@ -50,6 +50,18 @@ public class App {
             model.put("template", "templates/stylist.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        post("/stylist/:stylist_id/client/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            Stylist stylist = Stylist.find(Integer.parseInt(request.params("stylist_id")));
+            String name = request.queryParams("name");
+            String telno = request.queryParams("telno");
+            Client newClient = new Client(name, telno, stylist.getId());
+            newClient.save();
+            String url = String.format("/stylist/%d",stylist.getId());
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 
 }
