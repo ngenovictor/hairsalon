@@ -32,6 +32,17 @@ public class App {
             model.put("template","templates/index.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        post("/stylists/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String stylistName = request.queryParams("name");
+            String telno = request.queryParams("telno");
+            Stylist newStylist = new Stylist(stylistName,telno);
+            newStylist.save();
+
+            response.redirect("/");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 
 }
