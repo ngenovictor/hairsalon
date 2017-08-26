@@ -102,4 +102,14 @@ public class ClientTest {
 
         assertTrue(Client.all().size()==0);
     }
+    @Test
+    public void getClientStylist_returnsTheStylistAssignedToAParticularClient_String(){
+        Stylist newStylist = new Stylist("Rose","0726772775");
+        newStylist.save();
+
+        Client firstClient = new Client("Victor","0721717141",newStylist.getId());
+        firstClient.save();
+
+        assertEquals(firstClient.getClientStylist().getName(), "Rose");
+    }
 }
