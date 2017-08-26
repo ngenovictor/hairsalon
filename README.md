@@ -1,5 +1,7 @@
 ## Hair Salon App
-The salon owner can add a list of stylists, and for each stylist, add clients who see that stylist. The stylists work independently, so each client only belongs to a single stylist.
+The salon owner can add a list of stylists, and for each stylist, add clients who see that stylist. The stylists work independently, so each client only belongs to a single stylist. 
+
+[Link to App](http://hairsalon-ip.herokuapp.com/)
 
 **Specs**
 1. Salon employee can see list of all stylists.
@@ -16,3 +18,25 @@ The salon owner can add a list of stylists, and for each stylist, add clients wh
 2. Spark Java Web Framework
 3. PostgreSQL Database
 4. Velocity Template Engine
+
+**Set Up and Installation**
+1. Download the project folders
+> ```
+>$ git clone https://github.com/ngenovictor/hairsalon.git
+>$ cd hairsalon
+>```
+2. Change postgres db login details
+> ```
+> $ cp src/main/java/DbDetailsExample.java src/main/java/DbDetails.java 
+> $ gedit src/main/java/DbDetails.java
+>```
+> Change the class name to DbDetails and the db logins to your credentials
+3. Launch
+> ```
+> $gradle run
+>```
+> open [http://localhost:4567](http://localhost:4567)
+
+**Licence and copyright**
+Ngeno Victor, Moringa School
+Licensed under [MIT Licence](Licence.txt) 
