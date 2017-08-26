@@ -62,6 +62,26 @@ public class App {
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        get("clients/:client_id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            Client thisClient = Client.find(Integer.parseInt(request.params("client_id")));
+            model.put("client", thisClient);
+            model.put("template", "templates/client.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/stylist/:stylist_id/edit", (request, response) ->{
+            Map<String, Object> model = new HashMap<>();
+            Stylist stylist = Stylist.find(Integer.parseInt(request.params("stylist_id")));
+            String name = request.queryParams("name");
+            String telno = request.queryParams("telno");
+            stylist.update(name,telno);
+                        
+            String url = String.format("/stylist/%d",stylist.getId());
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 
 }
