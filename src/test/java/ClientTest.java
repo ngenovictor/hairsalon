@@ -12,7 +12,7 @@ public class ClientTest {
 
     @Before
     public void setUp(){
-        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hairsalontest", "kingkong", "m1@467net");
+        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hairsalontest", DbDetails.getUsername(), DbDetails.getPassword());
     }
 
     @After
