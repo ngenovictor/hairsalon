@@ -36,6 +36,8 @@ The salon owner can add a list of stylists, and for each stylist, add clients wh
 > $gradle run
 >```
 > open [http://localhost:4567](http://localhost:4567)
+4. Deploy to Heroku
+Check out this [link](https://brianmarete.github.io/blog/java/spark/postgresql/heroku/2017/05/12/deploying-a-spark-java-app-with-a-postgresql-database-to-heroku.html)
 
 **Licence and copyright**
 Ngeno Victor, Moringa School
