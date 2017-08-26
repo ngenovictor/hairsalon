@@ -1,4 +1,80 @@
 <div class="container">
     <h2>$client.getName()</h2>
     <p>Tel No: $client.getTelNo()</p>
+    <p>Assigned To:
+        #if($client.getClientStylist())
+            <a href="/stylist/$client.getClientStylist().getId()">$client.getClientStylist().getName()</a>
+        #else
+            <span id="nostylist"><strong>None. Add by editing below or deleting this client.</strong></span>
+        #end
+    </p>
+    <button class="btn btn-outline-primary" data-toggle="modal" data-target="#clienteditmodal">Edit Client Details</button>
+    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#clientdeletemodal">Delete Client</button>
 </div>
+
+<!-- Edit Stylist Modal -->
+<div class="modal fade" id="clienteditmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit $client.getName() Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/client/$client.getId()/edit" method="post">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input value="$client.getName()" type="text" name="name" id="name" required="required" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="telno">Telephone Number:</label>
+                        <input value="$client.getTelNo()" type="text" name="telno" id="telno"  required="required" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="stylist">Reassign to Another Stylist</label>
+                        <select name="stylist" id="stylist" class="form-control">
+                            #if($client.getClientStylist())
+                                <option value="$client.getClientStylist().getId()">$client.getClientStylist().getName()</option>
+                            #end
+                            #foreach($stylist in $stylists)
+                                #if(!($stylist.getId() == $client.getClientStylist().getId()))
+                                    <option value="$stylist.getId()">$stylist.getName()</option>
+                                #end
+                            #end
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-success">Update</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End edit client modal-->
+<!-- Delete client Modal -->
+<div class="modal fade" id="clientdeletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete $client.getName()</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete this client?</p>
+            <form action="/client/$client.getId()/delete" method="post">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!--End delete stylist modal-->

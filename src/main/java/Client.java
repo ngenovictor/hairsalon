@@ -89,4 +89,12 @@ public class Client {
                     .executeUpdate();
         }
     }
+    public Stylist getClientStylist(){
+        try(Connection conn = DB.sql2o.open()){
+            String sql = "SELECT * FROM stylists WHERE id=:id";
+            return conn.createQuery(sql)
+                    .addParameter("id",stylistId)
+                    .executeAndFetchFirst(Stylist.class);
+        }
+    }
 }

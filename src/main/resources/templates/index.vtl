@@ -1,45 +1,31 @@
 <div class="container">
-    #if($stylists)
-        #set($count = 0)
-        #foreach($stylist in $stylists)
-            #set($count = $count + 1)
-            <p>$count<span>.</span><a href="/stylist/$stylist.getId()"> $stylist.getName()</a></p>
-        #end
-    #else
-        <p>You haven't listed any stylists yet</p>
-    #end
-    <button class="btn btn-outline-success" data-toggle="modal" data-target="#stylistmodal">
-        Add New Stylist
-    </button>
-
-    <!-- New Stylist Modal -->
-    <div class="modal fade" id="stylistmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Stylist</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="/stylists/new" method="post">
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" placeholder="Enter stylist name" required="required" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="telno">Telephone Number:</label>
-                            <input type="text" name="telno" id="telno" placeholder="Enter stylist phone number" required="required" class="form-control"/>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline-success">Submit</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="jumbotron">
+        <h1>Star Hair Salon</h1>
+        <p class="lead">Be a Star. Come to our salon and get excuisite services at very affordable prices. We pride ourselves with new and fashionable beauty styles and products that will make you look like a star. Our value is in our customers. Find out why we still serve our so ever loyal customers!</p>
+        <a class="btn btn-lg btn-primary" href="#" role="button">Contact Us Today &raquo;</a>
     </div>
+    <div class="container marketing">
 
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="https://i.pinimg.com/736x/a2/70/39/a270391e9429d61b7bf93d215f0c7317--curly-hair-styles-for-black-hair-curly-hair-ideas.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Sheila Mwanyiga</h2>
+                <p>Shelly is AMAZING! Fantastic stylist. Love her! Highly recommend her to anyone that lives in Chicago. She cuts and styles with precision to provide the best results, consistently. Maxine has an awesome staff that always creates a great experience.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="http://www.lovely-hairstyles.com/wp-content/uploads/2017/02/16.African-Hairstyle.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Shieks Kapienga</h2>
+                <p>I am still going to Bob and I am still loving him, and now that I can afford to get my hair colored I can go back to John Blue! Blue has been doing my balyage for ten years. We are both old. But we are still as cool as ever and I wouldn't have anyone else touch my hair. He has always had the best eye for color and best hands to apply it.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="https://s-media-cache-ak0.pinimg.com/736x/f6/2c/e1/f62ce19a4ca830f75e560d97a3f5feb6--hair-braids-black-short-black-hair.jpg" alt="Generic placeholder image" width="140" height="140">
+                <h2>Lady Boss</h2>
+                <p>Amazing experience from start to finish, I have found my 'forever hair home'. Reservations: I was warmly greeted by a gentlemen when I called to schedule my first appointment. I explained what I was looking to have done, he NEVER rushed me and scheduled my services. It was refreshing to speak to a salon that was kind and accommodating vs pretentious and rude.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    </div>
 </div>
