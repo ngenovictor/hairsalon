@@ -17,10 +17,10 @@
         Add New Client to $stylist.getName()
     </button>
     <button class="btn btn-outline-primary" data-toggle="modal" data-target="#stylisteditmodal">Edit Stylist Details</button>
-    <button class="btn btn-outline-danger">Delete Stylist</button>
+    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#stylistdeletemodal">Delete Stylist</button>
 </div>
 
-<!-- New Stylist Modal -->
+<!-- New Client Modal -->
 <div class="modal fade" id="clientmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -49,7 +49,7 @@
         </div>
     </div>
 </div>
-<!--End new stylist modal-->
+<!--End new client modal-->
 <!-- Edit Stylist Modal -->
 <div class="modal fade" id="stylisteditmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -80,3 +80,26 @@
     </div>
 </div>
 <!--End edit stylist modal-->
+<!-- Delete Stylist Modal -->
+<div class="modal fade" id="stylistdeletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete $stylist.getName()</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this stylist?</p>
+                <form action="/stylist/$stylist.getId()/delete" method="post">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End delete stylist modal-->
