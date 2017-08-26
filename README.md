@@ -39,4 +39,4 @@ The salon owner can add a list of stylists, and for each stylist, add clients wh
 
 **Licence and copyright**
 Ngeno Victor, Moringa School
-Licensed under [MIT Licence](Licence.txt) 
+Licensed under [MIT Licence](License.txt) 
